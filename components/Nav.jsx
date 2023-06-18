@@ -34,103 +34,12 @@ const Nav = () => {
       </Link>
        {/* Desk top Navigation */}
        <div className="sm:flex hidden">
-        {session?.user ?(
-         <div className="flex gap-3 md:gap-5">
-          <Link href="/create-prompts" className='black_btn'>
-             Create Post
-          </Link>
-          <button type="button" onClick={signOut} class="outline_btn">
-            SignOut
-          </button>
-          <Link href="/profile">
-              <Image
-              src={session?.user.image}
-              alt='profile'
-              width={37}
-              height={37}
-              className='object-contain rounded-full'
-            />
-          </Link>
-         </div>   
-        ):(
-         <>
-         {
-          providers && Object.
-          values(providers).
-          map((provider) => (
             <button 
             type="button"
-            key={provider.name}
-            onClick={()=>signIn(provider.id)} className="orange_gradient">
+            onClick={()=>{}} className="orange_gradient">
              Sign In
-            </button>
-           )
-          )
-         }
-         </>
-        )}
+            </button>   
        </div>
-     {/* Mobile Navigation*/}
-     <div className="sm:hidden flex relative">
-     {session?.user ?(
-         <div className="flex ">
-          <Link href="/">
-              <Image
-              src={session?.user.image}
-              width={30}
-              height={30}
-              className='object-contain rounded-full' 
-              alt="profile"
-              onClick={()=> setToggleDropDown((prev) =>!prev)}
-            />
-          </Link>
-          {toggleDropDown && (
-            <div className="dropdown">
-              <Link
-               href="/profile"
-               className="dropdown_link"
-               onClick={()=>setToggleDropDown(false)}
-              >
-               My Profile
-              </Link>
-              <Link
-               href="/create-prompts"
-               className="dropdown_link"
-               onClick={()=>setToggleDropDown(false)}
-              >
-               Create Prompt
-              </Link>
-              <button
-               type="button"
-               onClick={()=>{
-                setToggleDropDown(false)
-                signOut();
-               }}
-               className="mt-5 w-full black_btn"
-              >
-              Sign Out
-              </button>
-            </div>
-          )}
-         </div>   
-        ):(
-         <>
-         {
-          providers && Object.
-          values(providers).
-          map((provider) => (
-            <button 
-            type="button"
-            key={provider.name}
-            onClick={()=>signIn(provider.id)} className="black_btn">
-             Sign In
-            </button>
-           )
-          )
-         }
-         </>
-        )}
-     </div>
     </nav>
   )
 }

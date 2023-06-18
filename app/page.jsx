@@ -16,8 +16,6 @@ const Home = () => {
     </p>
 
     {/* This is the user Feed */}
-
-    <Feed />
    </section>
   )
 }
