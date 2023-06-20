@@ -24,7 +24,6 @@ if (firebase.getApp.length === 0) {
   console.log("Connted Sucessully")
 } else {
   app = firebase.initializeApp(firebaseConfig);
-  console.log(app);
 }
 
 };

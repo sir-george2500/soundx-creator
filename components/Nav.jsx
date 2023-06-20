@@ -15,8 +15,8 @@ const Nav = () => {
         <Image
           src='/assets/images/logo.svg'
           alt='logo'
-          width={37}
-          height={37}
+          width={40}
+          height={40}
           className='object-contain'
         />
         <p className='logo_text'>soundx-creator</p>
@@ -40,6 +40,16 @@ const Nav = () => {
              text="SignOut"
              onClick={()=>{}}
              />
+
+              <Link href="/profile">
+              <Image
+              src={require('../public/assets/icons/profile_avatar.png')}
+              alt='profile'
+              width={40}
+              height={40}
+              className='object-contain rounded-full '
+              />
+              </Link>
              </div>
 
         ):(
