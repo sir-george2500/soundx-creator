@@ -1,5 +1,7 @@
 import Feed from "@components/Feed";
+import { initializeFirebase } from "@utils/firebase";
 
+initializeFirebase();
 const Home = () => {
   return (
    <section className="w-full flex-center flex-col">
