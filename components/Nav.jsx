@@ -3,22 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import{useState,useEffect}from 'react'
 import {signOut,signIn,useSession,getProviders} from 'next-auth/react'
+import GradientButton from "./GradientButton";
 
 const Nav = () => {
 
-  const { data:session } = useSession();
-   const [providers,setProviders] = useState(null);
-
-   const [toggleDropDown,setToggleDropDown]=useState(false);
-
-   useEffect(()=>{
-    const setUpProviders = async ()=>{
-      const response = await getProviders();
-
-      setProviders(response)
-    }
-    setUpProviders();
-   },[])
+  const isUserLoggedIn = true;
+  
   return (
     <nav className="flex-between w-full mb-16 pt-3">
      <Link href='/' className='flex gap-2 flex-center'>
@@ -34,12 +24,49 @@ const Nav = () => {
       </Link>
        {/* Desk top Navigation */}
        <div className="sm:flex hidden">
-            <button 
-            type="button"
-            onClick={()=>{}} className="orange_gradient">
-             Sign In
-            </button>   
+
+        {isUserLoggedIn ? (
+             <div className="flex gap-3 md:gap-5">
+            <Link
+              href="/"
+              onClick={()=>{}} 
+              >
+            <GradientButton 
+             text="Dashboard"
+             />
+              </Link> 
+
+             <GradientButton 
+             text="SignOut"
+             onClick={()=>{}}
+             />
+             </div>
+
+        ):(
+         <>
+         
+             <Link
+              href="/"
+              onClick={()=>{}} 
+              className="orange_gradient">
+
+              Sign In
+              </Link>  
+
+         </>
+         
+       
+
+        )
+        
+        }
+            
        </div>
+
+
+       {/**Mobile Navigation */}
+
+      
     </nav>
   )
 }

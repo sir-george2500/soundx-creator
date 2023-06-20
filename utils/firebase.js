@@ -25,7 +25,6 @@ if (firebase.getApp.length === 0) {
 } else {
   app = firebase.initializeApp(firebaseConfig);
   console.log(app);
-  console.log("already Connected to firebase");
 }
 
 };
