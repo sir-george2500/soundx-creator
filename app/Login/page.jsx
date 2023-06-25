@@ -52,9 +52,13 @@ const Login = () => {
             </div>
 
             <button
-              className="mt-4 bg-red-500 hover:bg-red-600 text-white font-medium rounded-lg px-4 py-2"
+              className="flex gap-2 mt-4  hover:text-gray-300 text-white font-medium rounded-lg px-4 py-2"
             >
               Login with Google
+              <Image src={require('@public/assets/icons/google.png')}
+                width={20}
+                height={20}
+              />
             </button>
           </div>
         </div>
