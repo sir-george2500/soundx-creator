@@ -56,14 +56,23 @@ const Nav = () => {
 
         ):(
          <>
-         
+         <div  className="flex gap-2">
              <Link
               href="/"
               onClick={()=>{}} 
               className="orange_gradient">
 
-              Sign In
+              Login
               </Link>  
+
+              <Link
+              href="/"
+              onClick={()=>{}} 
+              className="orange_gradient">
+
+              Register
+              </Link> 
+         </div>
 
          </>
          
@@ -97,15 +106,18 @@ const Nav = () => {
               >
                Dashboad
               </Link>
-              <button
-               type="button"
-               onClick={()=>{
-                setToggleDropDown(false)
-               }}
-               className="mt-5 w-full black_btn"
+
+              <Link
+               href="/profile"
+               className="orange_gradient"
+               onClick={()=>setToggleDropDown(false)}
               >
-              Sign Out
-              </button>
+               My Profile
+              </Link>
+              <GradientButton 
+               text="SignOut"
+               onClick={()=>{}}
+             />
             </div>
           )}
           </Link>
