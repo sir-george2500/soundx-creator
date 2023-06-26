@@ -1,6 +1,8 @@
 import GradientButton from '@components/GradientButton'
 import TextInput from '@components/TextInput';
 import Image from 'next/image'
+import { mdiAccount ,mdiLock } from '@mdi/js';
+
 
 
 const Login = () => {
@@ -20,7 +22,8 @@ const Login = () => {
                 type="Email"
                 name="email"
                 label="Email"
-                placeholder="Please Enter Your Email"             
+                placeholder="Please Enter Your Email"  
+                icon={mdiAccount}           
               />
             </div>
             <div className="mb-2">
@@ -28,7 +31,8 @@ const Login = () => {
                 type="password"
                 name="password"
                 label="Password"
-                placeholder="Password"             
+                placeholder="Password"
+                icon={mdiLock}            
               />
             </div>
              <div  className='mt-4'>
