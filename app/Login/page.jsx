@@ -16,7 +16,11 @@ const Login = () => {
             <h1 className="text-2xl font-black text-white p-3">Login</h1>
 
             <div className="mb-2">
-              <TextInput />
+              <TextInput 
+                type="password"
+                name="email"
+               
+              />
             </div>
             <div className="mb-2">
               <label htmlFor="password" className="block text-sm font-medium text-gray-900 dark:text-white">
