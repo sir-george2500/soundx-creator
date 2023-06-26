@@ -17,9 +17,10 @@ const Login = () => {
 
             <div className="mb-2">
               <TextInput 
-                type="password"
+                type="Email"
                 name="email"
-               
+                label="Email"
+                placeholder="Please Enter Your Email"             
               />
             </div>
             <div className="mb-2">

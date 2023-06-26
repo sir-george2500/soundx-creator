@@ -7,12 +7,13 @@ const TextInput = ({
     placeholder,
     required,
     className,
+    label,
     ...otherProps
   }) => {
     return (
       <>
         <label htmlFor={id} className="block text-sm font-medium text-gray-900 dark:text-white">
-          {placeholder}
+          {label}
         </label>
         <input
           type={type}
