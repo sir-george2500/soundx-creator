@@ -7,7 +7,7 @@ import GradientButton from "./GradientButton";
 
 const Nav = () => {
 
-  const isUserLoggedIn = true;
+  const isUserLoggedIn = false;
 
   const [toggleDropDown,setToggleDropDown]=useState(false);
   
@@ -58,7 +58,7 @@ const Nav = () => {
          <>
          <div  className="flex gap-2">
              <Link
-              href="/"
+              href="/Login"
               onClick={()=>{}} 
               className="orange_gradient">
 
