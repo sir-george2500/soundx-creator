@@ -1,4 +1,3 @@
-import React from 'react';
 
 const TextInput = ({
   type,
@@ -10,10 +9,11 @@ const TextInput = ({
   label,
   leftIcon,
   rightIcon,
-  error,
   errorMessage,
+  onPressRightIcon,
   ...otherProps
 }) => {
+
   return (
     <>
       <label htmlFor={id} className="block text-sm font-medium text-gray-900 dark:text-white">
@@ -42,17 +42,19 @@ const TextInput = ({
         />
         {rightIcon && (
           <svg
-            className="absolute w-5 h-5 text-gray-400 right-3 top-1/2 transform -translate-y-1/2"
+            className="absolute w-5 h-5 text-gray-400 right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
             viewBox="0 0 24 24"
             fill="currentColor"
+            onClick={onPressRightIcon}
           >
             <path d={rightIcon} />
           </svg>
+
         )}
       </div>
-      {error && (
-        <p className="text-red-500 text-sm mt-1">{errorMessage}</p>
-      )}
+
+      <p className='text-red-500'>{errorMessage}</p>
+
     </>
   );
 };
