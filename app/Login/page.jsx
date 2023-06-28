@@ -6,7 +6,7 @@ import GradientButton from '@components/GradientButton';
 import TextInput from '@components/TextInput';
 import Image from 'next/image';
 import { mdiAccount, mdiEye, mdiEyeOff, mdiLock } from '@mdi/js';
-import AppForm from '@components/form/AppForm';
+import Link from 'next/link';
 
 const validationSchema = yup.object({
   email: yup
@@ -76,6 +76,11 @@ const Login = () => {
                   rightIcon={showPassword ? mdiEyeOff : mdiEye}
                   onPressRightIcon={onPressRightIcon}
                 />
+              </div>
+              <div  className='flex justify-end'>
+              <Link href="/forgot-password" className="text-sm text-white">
+                Forgot Password?
+              </Link>
               </div>
               <div className="mt-4">
                 <div className="flex justify-center"> {/* Add this div to center the login button */}
