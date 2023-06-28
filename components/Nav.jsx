@@ -60,18 +60,19 @@ const Nav = () => {
              <Link
               href="/Login"
               onClick={()=>{}} 
-              className="orange_gradient">
+             >
+              <GradientButton 
+               text="Login"
+              />            
+            </Link>
 
-              Login
-              </Link>  
-
-              <Link
-              href="/"
-              onClick={()=>{}} 
-              className="orange_gradient">
-
-              Register
-              </Link> 
+             <Link
+              href="/register"
+             >    
+            <GradientButton 
+               text="Register"
+              />            
+             </Link>
          </div>
 
          </>
