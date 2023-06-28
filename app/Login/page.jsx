@@ -1,7 +1,9 @@
+'use client'
 import GradientButton from '@components/GradientButton'
 import TextInput from '@components/TextInput';
 import Image from 'next/image'
 import { mdiAccount ,mdiLock } from '@mdi/js';
+import AppForm from '@components/form/AppForm';
 
 
 
@@ -16,14 +18,17 @@ const Login = () => {
         <div className="h-70 w-full rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
           <div className="flex h-full w-full items-center justify-center bg-neutral-950 back flex-col pl-20 pr-20 pt-10 pb-10">
             <h1 className="text-2xl font-black text-white p-3">Login</h1>
+           <AppForm>
 
+            
+           
             <div className="mb-2">
               <TextInput 
                 type="Email"
                 name="email"
                 label="Email"
                 placeholder="Please Enter Your Email"  
-                icon={mdiAccount}           
+                leftIcon={mdiAccount}           
               />
             </div>
             <div className="mb-2">
@@ -32,7 +37,7 @@ const Login = () => {
                 name="password"
                 label="Password"
                 placeholder="Password"
-                icon={mdiLock}            
+                leftIcon={mdiLock}            
               />
             </div>
              <div  className='mt-4'>
@@ -55,7 +60,7 @@ const Login = () => {
               />
             </button>
 
-
+           </AppForm>
           </div>
         </div>
       </div>
