@@ -13,17 +13,15 @@ const firebaseConfig = {
   measurementId: process.env.NEXTMESUREMENTID,
 };
 
-// Initialize Firebase
-export const initializeFirebase = () => {
- 
-    let app;
 
+
+// Initialize Firebase
+  
+let  app;
 if (firebase.getApp.length === 0) {
   app = firebase.initializeApp(firebaseConfig);
-
-  console.log("Connted Sucessully")
 } else {
   app = firebase.initializeApp(firebaseConfig);
-}
-
 };
+
+export {  app };

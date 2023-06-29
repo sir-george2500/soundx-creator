@@ -33,9 +33,28 @@ const Register = () => {
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      // Handle form submission logic here
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const response = await fetch('api/register-users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
+        });
+
+        if (response.ok) {
+          // Handle successful registration
+          console.log('User registered successfully');
+        } else {
+          // Handle registration failure
+          const errorData = await response.json();
+          console.error('Failed to register user:', errorData.error);
+        }
+      } catch (error) {
+        // Handle network or server errors
+        console.error('An error occurred while registering the user');
+      }
     },
   });
 
@@ -46,7 +65,6 @@ const Register = () => {
   const onPressRightIcon = () => {
     setShowPassword((showPassword) => !showPassword);
   };
-
   return (
     <section className="w-full flex-center flex-col">
       <div className="mx-auto flex max-w-screen-sm items-center">
