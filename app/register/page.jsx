@@ -7,6 +7,7 @@ import TextInput from '@components/TextInput';
 import GradientButton from '@components/GradientButton';
 import Link from 'next/link';
 import Image from 'next/image';
+import { registerUser } from './services/registerSevices';
 
 const validationSchema = yup.object({
   email: yup
@@ -33,30 +34,26 @@ const Register = () => {
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
-      try {
-        const response = await fetch('api/register-users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(values),
-        });
+    onSubmit: async (values,{resetForm}) => {
+      console.log(values);
+      const{email,username,password}=values
 
-        if (response.ok) {
-          // Handle successful registration
-          console.log('User registered successfully');
-        } else {
-          // Handle registration failure
-          const errorData = await response.json();
-          console.error('Failed to register user:', errorData.error);
-        }
-      } catch (error) {
-        // Handle network or server errors
-        console.error('An error occurred while registering the user');
+      const data ={
+        email:email,
+        password:password,
+        userName:username
+      }
+      try{
+        await registerUser(data)
+        console.log("hi I am calling");
+        resetForm()
+      }catch(e){
+        console.log(e)
       }
     },
   });
+
+
 
   const handleGoogleLogin = () => {
     // Handle Google login logic here
