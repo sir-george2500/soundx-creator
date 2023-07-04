@@ -1,6 +1,12 @@
 
 const baseUrl = 'http://127.0.0.1:8000'
 
+
+/**
+ * This Method is use to register the User 
+ * @param {*} values 
+ */
+
 export const registerUser = async (values) => {
      console.log(values)
     const URL = `${baseUrl}/register`
