@@ -7,6 +7,7 @@ import TextInput from '@components/TextInput';
 import Image from 'next/image';
 import { mdiAccount, mdiEye, mdiEyeOff, mdiLock } from '@mdi/js';
 import Link from 'next/link';
+import { loginUser } from './services/loginServices';
 
 const validationSchema = yup.object({
   email: yup
@@ -28,9 +29,22 @@ const Login = () => {
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       // Handle form submission logic here
       console.log(values);
+      const{email,username,password}=values
+
+      const data ={
+        email:email,
+        password:password,
+        userName:username
+      }
+      try{
+        await loginUser(data)
+        resetForm()
+      }catch(e){
+        console.log(e)
+      }
     },
   });
 

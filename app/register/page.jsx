@@ -45,7 +45,6 @@ const Register = () => {
       }
       try{
         await registerUser(data)
-        console.log("hi I am calling");
         resetForm()
       }catch(e){
         console.log(e)
