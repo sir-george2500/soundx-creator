@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { mdiAccount, mdiEye, mdiEyeOff, mdiLock } from '@mdi/js';
 import Link from 'next/link';
 import { loginUser } from './services/loginServices';
+import { useTokenStorage } from '@app/hooks/useTokenStorage';
 
 const validationSchema = yup.object({
   email: yup
@@ -21,15 +22,15 @@ const validationSchema = yup.object({
 });
 
 const Login = () => {
+  const { storeToken } = useTokenStorage();
   const [showPassword, setShowPassword] = useState(false);
-
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
+    onSubmit: async (values,{resetForm}) => {
       // Handle form submission logic here
       console.log(values);
       const{email,username,password}=values
@@ -40,13 +41,17 @@ const Login = () => {
         userName:username
       }
       try{
-        await loginUser(data)
+        let res = await loginUser(data)
+        const {token} = res;
+        storeToken(token);
         resetForm()
       }catch(e){
         console.log(e)
       }
     },
   });
+
+  
 
   const handleGoogleLogin = () => {
     // Handle Google login logic here

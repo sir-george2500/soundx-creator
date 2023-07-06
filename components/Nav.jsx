@@ -2,13 +2,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import{useState,useEffect}from 'react'
-import {signOut,signIn,useSession,getProviders} from 'next-auth/react'
 import GradientButton from "./GradientButton";
+import { useTokenStorage } from "@app/hooks/useTokenStorage";
 
 const Nav = () => {
+  const{token}=useTokenStorage()
+  const [isUserLoggedIn,setisUserLoggedIn] = useState(false);
 
-  const isUserLoggedIn = false;
 
+  if(token) return setisUserLoggedIn(true);
+  console.log(isUserLoggedIn);
   const [toggleDropDown,setToggleDropDown]=useState(false);
   
   return (
