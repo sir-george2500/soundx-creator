@@ -9,6 +9,7 @@ import { mdiAccount, mdiEye, mdiEyeOff, mdiLock } from '@mdi/js';
 import Link from 'next/link';
 import { loginUser } from './services/loginServices';
 import { useTokenStorage } from '@app/hooks/useTokenStorage';
+import { useRouter } from 'next/router';
 
 const validationSchema = yup.object({
   email: yup
@@ -38,12 +39,12 @@ const Login = () => {
       const data ={
         email:email,
         password:password,
-        userName:username
       }
       try{
         let res = await loginUser(data)
         const {token} = res;
         storeToken(token);
+       
         resetForm()
       }catch(e){
         console.log(e)
