@@ -9,7 +9,7 @@ import { mdiAccount, mdiEye, mdiEyeOff, mdiLock } from '@mdi/js';
 import Link from 'next/link';
 import { loginUser } from './services/loginServices';
 import { useTokenStorage } from '@app/hooks/useTokenStorage';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const validationSchema = yup.object({
   email: yup
@@ -25,6 +25,7 @@ const validationSchema = yup.object({
 const Login = () => {
   const { storeToken } = useTokenStorage();
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter()
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -34,7 +35,7 @@ const Login = () => {
     onSubmit: async (values,{resetForm}) => {
       // Handle form submission logic here
       console.log(values);
-      const{email,username,password}=values
+      const{email,password}=values
 
       const data ={
         email:email,
@@ -44,7 +45,7 @@ const Login = () => {
         let res = await loginUser(data)
         const {token} = res;
         storeToken(token);
-       
+        router.push("/dashboard")
         resetForm()
       }catch(e){
         console.log(e)
