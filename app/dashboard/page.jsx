@@ -1,7 +1,8 @@
 "use client"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import useProtected from '@app/hooks/useProtected';
 
 
 const validationSchema = yup.object({
@@ -19,43 +20,10 @@ const validationSchema = yup.object({
 });
 
 const dashboard= () => {
-  const [showPassword, setShowPassword] = useState(false);
 
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      username: '',
-      phoneNumber: '',
-      password: '',
-    },
-    validationSchema: validationSchema,
-    onSubmit: async (values,{resetForm}) => {
-      console.log(values);
-      const{email,username,password}=values
+  
 
-      const data ={
-        email:email,
-        password:password,
-        userName:username
-      }
-      try{
-        await registerUser(data)
-        resetForm()
-      }catch(e){
-        console.log(e)
-      }
-    },
-  });
-
-
-
-  const handleGoogleLogin = () => {
-    // Handle Google login logic here
-  };
-
-  const onPressRightIcon = () => {
-    setShowPassword((showPassword) => !showPassword);
-  };
+ 
   return (
     <section className="w-full flex-center flex-col">
       <div className="mx-auto flex max-w-screen-sm items-center">

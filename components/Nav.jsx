@@ -7,11 +7,12 @@ import { useTokenStorage } from "@app/hooks/useTokenStorage";
 
 const Nav = () => {
   const{token}=useTokenStorage()
+
+
   const [isUserLoggedIn,setisUserLoggedIn] = useState(false);
 
-
-  if(token) return setisUserLoggedIn(true);
-  console.log(isUserLoggedIn);
+ 
+  if(token)  setisUserLoggedIn(true);
   const [toggleDropDown,setToggleDropDown]=useState(false);
   
   return (
