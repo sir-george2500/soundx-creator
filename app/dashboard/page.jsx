@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import useProtected from '@app/hooks/useProtected';
 
 
 const validationSchema = yup.object({

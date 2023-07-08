@@ -1,31 +1,21 @@
-import { useTokenStorage } from '@app/hooks/useTokenStorage';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export default async (request) => {
-  // Get the user JWT token from storage
-  const { getToken } = useTokenStorage();
-  let token = getToken()
 
-  if(request.url.includes('/dashboard'))
-  {
-     // Check if the user is authenticated
-        if (token) 
-        {
-        // The user is authenticated, allow them to access the route
-            console.log("Middleware okay");
-            return NextResponse.next();
-        } 
-        else 
-        {
-            // The user is not authenticated, redirect them to the login page
-            console.log("this is your token "+ token);
-            return NextResponse.redirect('http://localhost:3000/');
-        }
+  // Access cookies from the request
+  const jwtToken = request.cookies.get('jwtToken')?.value;
+  console.log('Token:',jwtToken);
+  // const currentUser = request.cookies.get("currentUser")?.value;
+  if (request.url.includes('/dashboard')) {
+    // Check if the user is authenticated
+    if (jwtToken) {
+      // The user is authenticated, allow them to access the route
+      console.log("Middleware okay");
+      return NextResponse.next();
+    } else {
+      // The user is not authenticated, redirect them to the login page
+      console.log(jwtToken);
+      return NextResponse.redirect('http://localhost:3000/');
+    }
   }
-
-  
 };
-
-export const config = {
-    matcher:'/dashboard'
-}
