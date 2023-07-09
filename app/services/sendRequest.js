@@ -9,7 +9,6 @@
 const sendRequest = async (endpoint, method, body = null) => {
     const baseUrl = 'http://127.0.0.1:8000';
     const url = `${baseUrl}/${endpoint}`;
-  
     try {
       const options = {
         method,
@@ -18,7 +17,6 @@ const sendRequest = async (endpoint, method, body = null) => {
         },
         body: body ? JSON.stringify(body) : null,
       };
-  
       const response = await fetch(url, options);
   
       if (response.ok) {

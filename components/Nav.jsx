@@ -1,23 +1,28 @@
 "use client"
 import Link from "next/link";
 import Image from "next/image";
-import{useState,useEffect}from 'react'
+import { useState, useEffect } from 'react';
 import GradientButton from "./GradientButton";
 import { useTokenStorage } from "@app/hooks/useTokenStorage";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const Nav = () => {
-  const{token}=useTokenStorage()
-
-
-  const [isUserLoggedIn,setisUserLoggedIn] = useState(false);
-
- 
-  if(token)  setisUserLoggedIn(true);
-  const [toggleDropDown,setToggleDropDown]=useState(false);
+  const router = useRouter()
+  let token = Cookies.get('jwtToken');
   
+  const [toggleDropDown, setToggleDropDown] = useState(false);
+
+
+
+  const logOut  = () => {
+     Cookies.remove('jwtToken');
+     return router.push("/Login")
+  }
+
   return (
     <nav className="flex-between w-full mb-16 pt-3">
-     <Link href='/' className='flex gap-2 flex-center'>
+      <Link href='/' className='flex gap-2 flex-center'>
         <Image
           src='/assets/images/logo.svg'
           alt='logo'
@@ -26,115 +31,81 @@ const Nav = () => {
           className='object-contain'
         />
         <p className='logo_text'>soundx-creator</p>
-
       </Link>
-       {/* Desk top Navigation */}
-       <div className="sm:flex hidden">
 
-        {isUserLoggedIn ? (
-             <div className="flex gap-3 md:gap-5">
-            <Link
-              href="/"
-              onClick={()=>{}} 
-              >
-            <GradientButton 
-             text="Dashboard"
-             />
-              </Link> 
-
-             <GradientButton 
-             text="SignOut"
-             onClick={()=>{}}
-             />
-
-              <Link href="/profile">
-              <Image
-              src={require('../public/assets/icons/profile_avatar.png')}
-              alt='profile'
-              width={40}
-              height={40}
-              className='object-contain rounded-full '
-              />
-              </Link>
-             </div>
-
-        ):(
-         <>
-         <div  className="flex gap-2">
-             <Link
-              href="/Login"
-              onClick={()=>{}} 
-             >
-              <GradientButton 
-               text="Login"
-              />            
+      {/* Desktop Navigation */}
+      <div className="sm:flex hidden">
+        {token ? (
+          <div className="flex gap-3 md:gap-5">
+            <Link href="/" onClick={() => {}}>
+              <GradientButton text="Dashboard" />
             </Link>
 
-             <Link
-              href="/register"
-             >    
-            <GradientButton 
-               text="Register"
-              />            
-             </Link>
-         </div>
+            <GradientButton text="SignOut" onClick={() => logOut()} />
 
-         </>
-         
-       
-
-        )
-        
-        }
-            
-       </div>
-       {/**Mobile Navigation */}
-       <div className="sm:hidden flex relative">
-       <div className="flex "> 
-
-       <Link href="/">
+            <Link href="/profile">
               <Image
+                src={require('../public/assets/icons/profile_avatar.png')}
+                alt='profile'
+                width={40}
+                height={40}
+                className='object-contain rounded-full '
+              />
+            </Link>
+          </div>
+        ) : (
+          <>
+            <div className="flex gap-2">
+              <Link href="/Login" onClick={() => {}}>
+                <GradientButton text="Login" />
+              </Link>
+
+              <Link href="/register">
+                <GradientButton text="Register" />
+              </Link>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className="sm:hidden flex relative">
+        <div className="flex ">
+          <Link href="/">
+            <Image
               src={require('../public/assets/icons/profile_avatar.png')}
               width={30}
               height={30}
-              className='object-contain rounded-full' 
+              className='object-contain rounded-full'
               alt="profile"
-              onClick={()=> setToggleDropDown((prev) =>!prev)}
-              />
+              onClick={() => setToggleDropDown((prev) => !prev)}
+            />
 
-           {toggleDropDown && (
-            <div className="dropdown">
-              <Link
-               href="/profile"
-               className="orange_gradient"
-               onClick={()=>setToggleDropDown(false)}
-              >
-               Dashboad
-              </Link>
+            {toggleDropDown && (
+              <div className="dropdown">
+                <Link
+                  href="/profile"
+                  className="orange_gradient"
+                  onClick={() => setToggleDropDown(false)}
+                >
+                  Dashboad
+                </Link>
 
-              <Link
-               href="/profile"
-               className="orange_gradient"
-               onClick={()=>setToggleDropDown(false)}
-              >
-               My Profile
-              </Link>
-              <GradientButton 
-               text="SignOut"
-               onClick={()=>{}}
-             />
-            </div>
-          )}
+                <Link
+                  href="/profile"
+                  className="orange_gradient"
+                  onClick={() => setToggleDropDown(false)}
+                >
+                  My Profile
+                </Link>
+                <GradientButton text="SignOut" onClick={() => {}} />
+              </div>
+            )}
           </Link>
-
-
-       </div>
-
-
-       </div>
-      
+        </div>
+      </div>
     </nav>
-  )
+  );
 }
 
-export default Nav
+export default Nav;
