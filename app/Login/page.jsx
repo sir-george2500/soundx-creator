@@ -48,6 +48,7 @@ const Login = () => {
         storeToken(token);
         router.push("/dashboard")
         resetForm()
+        window.location.reload();
       }catch(e){
         console.log(e)
       }

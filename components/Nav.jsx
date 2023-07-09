@@ -8,16 +8,20 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 const Nav = () => {
-  const router = useRouter()
-  let token = Cookies.get('jwtToken');
-  
+  const router = useRouter();
+  const [token, setToken] = useState(null);
   const [toggleDropDown, setToggleDropDown] = useState(false);
+  useEffect(() => {
+    const jwtToken = Cookies.get('jwtToken');
+    setToken(jwtToken);
+    
+  }, [router.asPath]);
 
-
-
-  const logOut  = () => {
-     Cookies.remove('jwtToken');
-     return router.push("/Login")
+  const logOut = () => {
+    Cookies.remove('jwtToken');
+    window.location.reload()
+    router.push("/Login");
+    
   }
 
   return (
@@ -41,7 +45,7 @@ const Nav = () => {
               <GradientButton text="Dashboard" />
             </Link>
 
-            <GradientButton text="SignOut" onClick={() => logOut()} />
+            <GradientButton text="SignOut" onClick={logOut} />
 
             <Link href="/profile">
               <Image
@@ -98,7 +102,7 @@ const Nav = () => {
                 >
                   My Profile
                 </Link>
-                <GradientButton text="SignOut" onClick={() => {}} />
+                <GradientButton text="SignOut" onClick={logOut} />
               </div>
             )}
           </Link>
