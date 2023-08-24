@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { loginUser } from './services/loginServices';
 import { useTokenStorage } from '@app/hooks/useTokenStorage';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 
 
 const validationSchema = yup.object({
@@ -59,6 +60,7 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     // Handle Google login logic here
+    signIn('google')
   };
 
  const onPressRightIcon = () =>{
@@ -124,6 +126,7 @@ const Login = () => {
               <button
                 className="flex gap-2 mt-4  hover:text-gray-300 text-white font-medium rounded-lg px-4 py-2"
                 onClick={handleGoogleLogin}
+                type='submit'
               >
                 Login with Google
                 <Image src={require('@public/assets/icons/google.png')} width={20} height={20} />

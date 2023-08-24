@@ -16,7 +16,6 @@ export default async (request) => {
   } else if (request.url.includes('/Login') || request.url.includes('/register') || request.url === '/') {
     // Check if the user is already authenticated
     if (jwtToken) {  
-      console.log(jwtToken);
       // The user is already authenticated, redirect them to the dashboard page
       console.log("Middleware Work");
       return NextResponse.redirect('http://localhost:3000/dashboard');

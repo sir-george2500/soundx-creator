@@ -1,6 +1,10 @@
-// registerUser.js
 import sendRequest from "@app/services/sendRequest";
 
+/**
+ * This method is use to registe the user 
+ * @param {*} values 
+ * @returns 
+ */
 export const registerUser = async (values) => {
   const endpoint = 'register';
 

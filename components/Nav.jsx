@@ -13,8 +13,7 @@ const Nav = () => {
   const [toggleDropDown, setToggleDropDown] = useState(false);
   useEffect(() => {
     const jwtToken = Cookies.get('jwtToken');
-    setToken(jwtToken);
-    
+    setToken(jwtToken);  
   }, [router.asPath]);
 
   const logOut = () => {

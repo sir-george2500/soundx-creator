@@ -7,7 +7,7 @@
  */
 
 const sendRequest = async (endpoint, method, body = null) => {
-    const baseUrl = 'http://127.0.0.1:8000';
+    const baseUrl = 'https://sound-x-creators-backend.vercel.app';
     const url = `${baseUrl}/${endpoint}`;
     try {
       const options = {
