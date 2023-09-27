@@ -19,6 +19,7 @@ const handler = NextAuth({
       if (account?.access_token) {
         token.access_token = account.access_token;
       }
+      console.log(token);
       return token;
     },
   },
