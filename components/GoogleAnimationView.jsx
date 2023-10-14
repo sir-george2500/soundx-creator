@@ -4,26 +4,35 @@ import googleLoad from "../public/assets/animations/googleanimate.json"
 
 export const GoogleAnimationView = () => {
 
-    //Style for the Error animation
-  const style = {
-        height:50,
-        marginTop:"30px",
-        width:50
-      }
+ 
 
-  //get me the animation data
+  const textLoading={
+    padding:28,
+    paddingTop:48,
+    paddingLeft:18,
+  }
+
+  const style = {
+    height: 50,
+    marginTop: "20px",
+    width: 50
+  }
+
   const options = {
     animationData: googleLoad,
-    loop:true
+    loop: true
   };
 
-  const { View } = useLottie(options,style);
-
+  const { View } = useLottie(options, style);
 
   return (
-    <>
-
-    {View}
-    </>
+    <div className='flex justify-between items-center'>
+      <div>
+       {View}
+      </div>
+      <div>
+        <p style={textLoading}>Loading</p>
+      </div>
+    </div>
   )
 }

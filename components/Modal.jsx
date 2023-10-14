@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen,children }) => {
   const modalStyle = {
     display: isOpen ? "block" : "none",
     position: "fixed",
@@ -21,14 +21,16 @@ const Modal = ({ isOpen, onClose, children }) => {
     padding: "20px",
     borderRadius: "4px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
   };
+  
 
   return (
     <div style={modalStyle}>
       <div style={contentStyle}>
-      <button onClick={onClose} style={{ float: "right", backgroundColor: "black", color: "white", border: "none", padding: "8px 16px", borderRadius: "4px", cursor: "pointer" }}>
-        Close
-      </button>
         {children}
       </div>
     </div>
