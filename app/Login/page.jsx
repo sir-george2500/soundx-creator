@@ -60,9 +60,6 @@ const Login = () => {
     },
   });
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
 
   const handleGoogleLogin = () => {
     // Handle Google login logic here
@@ -82,7 +79,7 @@ const Login = () => {
         <div className="h-70 w-full rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
           <div className="flex h-full w-full items-center justify-center bg-neutral-950 back flex-col pl-20 pr-20 pt-10 pb-10">
             <h1 className="text-2xl font-black text-white p-3">Login</h1>
-            <Modal isOpen={true} onClose={handleCloseModal}>
+            <Modal isOpen={showModal}>
               <GoogleAnimationView/>
             </Modal>
             <form onSubmit={formik.handleSubmit}>
