@@ -120,14 +120,6 @@ const Register = () => {
                     <div className="px-2 text-white">or</div>
                     <div className="flex-grow border-t border-white"></div>
                   </div>
-                  <div className="flex justify-center">
-                    <GoogleLogin
-                      onSuccess={handleGoogleLogin}
-                      onFailure={() => {
-                        console.log('Login Failed');
-                      }}
-                    />
-                  </div>
                 </div>
               </form>
             </div>
