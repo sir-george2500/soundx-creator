@@ -13,7 +13,7 @@ const validationSchema = yup.object({
     .required('Password is required'),
   confirm_password: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match') // Ensure it matches the password field
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
     .required('Confirm Password is required'),
 });
 
