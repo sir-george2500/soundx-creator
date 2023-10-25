@@ -10,7 +10,9 @@ const dashboard= () => {
  
   return (
     <section className="flex w-full">
-     <Sidebar />
+      <div>
+        <Sidebar />
+      </div>
      <DisplayView />
    </section>
   );
